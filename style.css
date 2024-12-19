@@ -1,0 +1,449 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #010108;
+    color: #C4FF00;
+    overflow-x: hidden;
+}
+
+footer {
+    background-color: #010108;
+    color: #c1fb00;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+header {
+    background-color: #010108;
+    color: #c1fb00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+     
+}
+
+.heading-style-2 {
+    color: #ffffff; 
+    font-size: 90px;
+    text-align: center;
+    margin: 20px 0; 
+    font-weight: bold; 
+    font-family: 'Oswald', sans-serif;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar li {
+    position: relative;
+    margin-left: 20px;
+}
+
+.navbar a {
+    color: #c1fb00;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background-color 0.3s, color 0.3s;
+    display: block;
+}
+
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.dropbtn {
+    background-color: #C4FF00;
+    color: #010108;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #010108;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #C4FF00;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #A0C500;
+}
+
+.parallax {
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.image-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 100%;
+}
+
+.background-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    right: 200px;
+    transform: translate(0, -50%);
+    color: #c4ff00;
+    font-size: 90px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.55px;
+    text-transform: uppercase;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.sub-text-overlay {
+    position: absolute;
+    top: 70%;
+    right: 200px;
+    transform: translate(0, -50%);
+    color: #ffffff;
+    font-size: 28px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-align: right;
+    z-index: 2;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    max-width: 700px;
+    width: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.gradient-block {
+    width: 100%;
+    height: 450px;
+    background: linear-gradient( #009187, #030318);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.slider, .slider2 {
+    width: 100%; /* Занимают ширину родительского элемента */
+    height: 500px; /* Увеличена высота контейнера */
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px; /* Закругление углов слайдера на 10 пикселей */
+    margin-top: 10px; /* Отступ сверху для слайдера */
+}
+
+.slider img, .slider2 img {
+    width: 600px; /* Увеличенный размер изображений */
+    height: auto; /* Высота изображений по пропорциям */
+    margin-right: 10px; /* Отступ между изображениями */
+    border-radius: 10px; /* Скругление краев изображений */
+}
+
+
+@media (max-width: 768px) {
+    .slider img, .slider2 img {
+        width: 100%; /* Уменьшите изображения для мобильных устройств */
+    }
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+    margin-top: 0; /* Убедитесь, что здесь не установлен негативный отступ */
+    padding-top: 10px; /* Добавьте отступ сверху, если необходимо */
+}
+
+
+.slider-wrapper2 {
+    display: flex;
+    transition: transform 0.5s ease;
+    margin-top: 140px;
+}
+
+.custom-title {
+    position: relative;
+    top: 60px;
+    left: 250px;
+    color: #C4FF00;
+    font-size: 60px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    text-align: right;
+    margin-right: 450px;
+}
+
+.year-overlay {
+    position: relative;
+    top: 20px;
+    left: 250px;
+    color: #c4ff00;
+    font-size: 100px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.55px;
+    text-transform: uppercase;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    text-align: left;
+}
+
+.sub-text-overlay2 {
+    position: absolute;
+    top: 160px;
+    left: 250px;
+    color: #ffffff;
+    font-size: 28px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-align: left;
+    z-index: 2;
+    margin-top: 10px;
+    max-width: 700px;
+    width: 100%;
+}
+
+.full-width-block {
+    width: 100%; /* Занимает всю ширину */
+    height: 600px; /* Высота блока */
+    background: linear-gradient(to bottom, #93FFEF, #0096F6); /* Градиентный фон */
+    position: relative;
+    overflow: hidden; /* Скрываем содержимое, выходящее за пределы блока */
+    margin-top: 10px; /* Отступ сверху */
+    
+}
+
+body {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 120px;
+    margin: 20px;
+    padding: 20px; 
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.games-button-container {
+    margin-right: 20px;
+}
+
+.games-button {
+    background-color: #C4FF00; /* Цвет кнопки */
+    color: #000; /* Цвет текста на кнопке */
+    padding: 15px 30px; /* Отступы */
+    border: none; /* Убираем рамку */
+    border-radius: 25px; /* Скругление углов */
+    font-size: 18px; /* Размер шрифта */
+    text-decoration: none; /* Убираем подчеркивание ссылок */
+    display: inline-block; /* Позволяем ссылке вести себя как кнопка */
+    cursor: pointer; /* Курсор указателя при наведении */
+    transition: background-color 0.3s; /* Плавный переход фона при наведении */
+}
+
+.games-button:hover {
+    background-color: #A3FF00; /* Цвет кнопки при наведении */
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.search-input {
+    padding: 15px 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 18px;
+    outline: none;
+    transition: border-color 0.3s;
+
+}
+
+.search-input::placeholder {
+    color: #aaa;
+}
+
+.search-input:focus {
+    border-color: #C4FF00;
+}
+
+/* Стили для кнопки поиска */
+.search-button {
+    background-color: #C4FF00; /* Цвет кнопки, такой же как у остальных кнопок */
+    color: #000; /* Цвет текста на кнопке */
+    padding: 15px 30px; /* Добавляем отступы */
+    border: none; /* Убираем рамку */
+    border-radius: 25px; /* Скругление углов */
+    font-size: 18px; /* Размер шрифта */
+    cursor: pointer; /* Курсор указателя при наведении */
+    margin-left: 10px; /* Отступ слева от кнопки */
+    transition: background-color 0.3s; /* Плавный переход фона при наведении */
+}
+
+.search-button:hover {
+    background-color: #A3FF00; /* Цвет кнопки при наведении */
+}
+
+
+.instruction-text {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+
+.background-image2 {
+    position: absolute;
+    width: 100%; /* Устанавливаем ширину на 100% */
+    object-fit: cover; /* Заполняем пространство, сохраняя пропорции */
+    z-index: -1; /* Установим z-index, чтобы изображение было ниже псевдоэлемента */
+    margin-top: -550px;
+}
+
+/* Стили для нового блока */
+.full-width-block > div {
+    position: relative;
+    z-index: 2; /* Убедитесь, что содержимое блока будет поверх изображения */
+    color: #000; /* Цвет текста внутри блока, можно изменить по желанию */
+    text-align: center; /* Центрирование текста */
+    padding-top: 0px; /* Отступ сверху для текста */
+}
+
+/* Карусель */
+main#carousel {
+    grid-row: 1 / 2;
+    grid-column: 1 / 8;
+    width: 100vw;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    --items: 5;
+    --middle: 3;
+    --position: 1;
+    pointer-events: none;
+}
+
+div.item {
+    position: absolute;
+    width: 300px;
+    height: }
+
+.contact-block {
+    display: flex;
+    justify-content: space-between; /* Размещаем элементы по краям */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    background-color: #010108; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Отступы внутри блока */
+}
+
+.social-buttons {
+    display: flex;
+    gap: 15px; /* Отступ между кнопками */
+}
+
+.social-button {
+    display: inline-block; /* Делает ссылку блочным элементом */
+}
+
+.social-icon {
+    width: 30px; /* Ширина иконок */
+    height: auto; /* Высота по пропорциям */
+    transition: transform 0.3s; /* Плавный переход при наведении */
+}
+
+.social-button:hover .social-icon {
+    transform: scale(1.1); /* Увеличение иконки при наведении */
+}
+
+.contact-text {
+    text-align: center; /* Центрируем текст */
+    flex-grow: 1; /* Занимаем оставшееся пространство */
+}
+
+.logo-container {
+    display: flex;
+    justify-content: flex-end; /* Выравниваем логотип по правому краю */
+}
+
+.logo {
+    width: 100px; /* Ширина логотипа */
+    height: auto; /* Высота по пропорциям */
+}

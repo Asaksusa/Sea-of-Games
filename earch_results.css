@@ -1,0 +1,73 @@
+header {
+    padding: 20px; /* Отступы вокруг шапки */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для шапки */
+}
+
+.navbar ul {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы */
+    display: flex; /* Используем флекс для выравнивания элементов */
+    justify-content: center; /* Центрируем список */
+}
+
+.navbar li {
+    margin: 0 15px; /* Отступы между элементами списка */
+}
+
+.navbar a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #C4FF00; /* Цвет ссылок */
+    font-weight: bold; /* Жирный текст для ссылок */
+}
+
+h1 {
+    text-align: center; /* Центрирование заголовка */
+    margin-top: 40px; /* Отступ сверху */
+    color: #030318; /* Цвет заголовка */
+}
+
+#games-container {
+    display: flex; /* Используем флекс для размещения игр */
+    flex-wrap: wrap; /* Перенос элементов на новую строку */
+    justify-content: center; /* Центрирование элементов */
+    gap: 20px; /* Промежуток между элементами */
+    padding: 20px; /* Отступы внутри контейнера */
+}
+
+.game-item {
+    background: transparent; /* Убираем белый фон, устанавливая прозрачность */
+    border-radius: 8px; /* Скругленные углы у карточек */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Тень для карточек */
+    overflow: hidden; /* Скрываем выступающие части */
+    transition: transform 0.2s; /* Плавная анимация при наведении */
+    cursor: pointer; /* Курсор указывает на кликабельность */
+}
+
+.game-item:hover {
+    transform: scale(1.05); /* Увеличение при наведении */
+}
+
+.game-item img {
+    width: 100%; /* Изображения шириной 100% */
+    height: auto; /* Высота автоматическая */
+}
+
+.game-item h3 {
+    font-size: 20px; /* Размер заголовка в карточках */
+    margin: 10px 0 5px 0; /* Отступы между заголовком и изображением */
+    color: #030318; /* Цвет заголовка игры */
+    text-align: center; /* Центрирование текста */
+}
+
+.game-item p {
+    text-align: center; /* Центрирование текста */
+    color: #666; /* Цвет текста */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+footer {
+    text-align: center; /* Центрирование текста футера */
+    padding: 10px; /* Отступы вокруг футера */
+    background: #030318; /* Фон для футера */
+    color: #b6fef4; /* Цвет текста в футере */
+}

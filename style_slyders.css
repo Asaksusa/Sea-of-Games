@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.full-width-block {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #010108, #0096F6); /* Градиент теперь на родительском контейнере */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.background-image-container {
+    width: 100%;
+    height: 1400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.background-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; /* Прозрачность 50% */
+    z-index: 0; /* Помещаем за контентом */
+}
+
+.background-image-container > * {
+    position: relative; /* Помещаем контент на передний план */
+    z-index: 1; /* Обеспечиваем, чтобы контент был выше фона */
+}
+
+.heading-style-2 {
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 70px;
+    color: #C4FF00;
+    text-align: center;
+    margin-bottom: 10px; /* добавил отступ снизу */
+    text-shadow: 2px 2px 4px #000;
+    z-index: 1;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  gap: 10px;
+  z-index: 1;
+  margin-top: 30px;
+
+  > div {
+    flex: 0 0 120px;
+    border-radius: 0.5rem;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    box-shadow: 1px 5px 15px #1e0e3e;
+    position: relative;
+    overflow: hidden;
+    z-index: 2; /* Добавлено z-index для контейнера */
+
+    /* Указываем фоновое изображение для каждой карточки */
+    &:nth-of-type(1) {
+      background: url("new_image5.jpg") no-repeat 50% / cover; /* Изображение для первой карточки */
+    }
+    &:nth-of-type(2) {
+      background: url("new_image6.jpg") no-repeat 50% / cover; /* Изображение для второй карточки */
+    }
+    &:nth-of-type(3) {
+      background: url("new_image7.jpg") no-repeat 50% / cover; /* Изображение для третьей карточки */
+    }
+    &:nth-of-type(4) {
+      background: url("new_image8.jpg") no-repeat 50% / cover; /* Изображение для четвертой карточки */
+    }
+    &:nth-of-type(5) {
+      background: url("new_image9.jpg") no-repeat 50% / cover; /* Изображение для четвертой карточки */
+    }
+       &:nth-of-type(6) {
+      background: url("new_image10.jpg") no-repeat 50% / cover; /* Изображение для четвертой карточки */
+    }
+       &:nth-of-type(7) {
+      background: url("new_image11.jpg") no-repeat 50% / cover; /* Изображение для четвертой карточки */
+    }
+       &:nth-of-type(8) {
+      background: url("new_image12.jpg") no-repeat 50% / cover; /* Изображение для четвертой карточки */
+    }
+
+    .content {
+      font-size: 1.5rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      opacity: 0;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-end;
+      background: rgb(2, 2, 46);
+      background: linear-gradient(
+        0deg,
+        rgba(2, 2, 46, 0.6755077030812324) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: translateY(100%);
+      transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+      visibility: hidden;
+      z-index: 2; /* Добавлено z-index для содержимого */
+
+      span {
+        display: block;
+        margin-top: 5px;
+        font-size: 1.2rem;
+      }
+    }
+
+    &:hover {
+      flex: 0 0 250px;
+      box-shadow: 1px 3px 15px #7645d8;
+      transform: translateY(-30px);
+    }
+
+    &:hover .content {
+      opacity: 1;
+      transform: translateY(0%);
+      visibility: visible;
+    }
+  }
+}

@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты поиска - Sea of Games</title>
+    <link rel="stylesheet" href="earch_results.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 800px;
+            color: #C4FF00; /* Цвет текста */
+            overflow-x: hidden;
+            background: linear-gradient( #009187, #030318); /* Градиентный фон */
+            background-size: cover; /* Настройка под размер экрана */
+            background-position: center; /* Центрирование изображения */
+            background-repeat: no-repeat; /* Убедиться, что изображение не повторяется */
+        }
+
+        header {
+            background-color: rgba(1, 1, 8, 0.8);
+            color: #C4FF00; /* Цвет текста в шапке */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px; /* Отступы вокруг шапки */
+        }
+
+        .logo img {
+            height: 50px; /* Высота логотипа */
+        }
+
+        .navbar {
+            display: flex;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .navbar li {
+            position: relative;
+            margin-left: 20px; /* Отступы между элементами меню */
+        }
+
+        .navbar a {
+            color: #C4FF00; /* Цвет текста ссылок */
+            text-decoration: none; /* Убрано подчеркивание */
+            padding: 15px 20px; /* Отступы вокруг ссылок */
+            transition: background-color 0.3s, color 0.3s;
+            display: block;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff; /* Цвет текста при наведении */
+        }
+
+        h1 {
+            text-align: center; /* Центрирование заголовка */
+            margin-top: 40px; /* Отступ сверху */
+            color: #C4FF00; /* Цвет заголовков */
+        }
+
+        #games-container {
+            display: grid; /* Используем грид для размещения игр */
+            grid-template-columns: repeat(4, 1fr); /* Четыре колонки */
+            grid-gap: 20px; /* Промежуток между элементами */
+            padding: 20px; /* Отступы внутри контейнера */
+        }
+
+        .game-item {
+            text-align: center; /* Центрирование текста внутри карточек */
+            background-color: rgba(1, 1, 8, 0.7); /* Фон карточек */
+            border-radius: 10px; /* Скругленные углы */
+            padding: 10px; /* Отступы внутри карточек */
+            transition: transform 0.2s; /* Плавная анимация при наведении */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Тень для карточек */
+        }
+
+        .game-item img {
+            width: 100%; /* Изображения шириной 100% */
+            border-radius: 10px; /* Скругленные углы для изображений */
+        }
+
+        .game-info h3 {
+            font-size: 18px; /* Размер заголовка игр */
+            margin: 5px 0; /* Отступы между заголовком и текстом */
+            color: #C4FF00; /* Цвет заголовков игр */
+        }
+
+        .game-info p {
+            font-size: 16px; /* Размер шрифта для описаний игр */
+            color: #666; /* Цвет текста описаний */
+        }
+
+        footer {
+            background-color: #010108; /* Фон футера */
+            color: #C4FF00; /* Цвет текста футера */
+            text-align: center; /* Центрирование текста футера */
+            padding: 10px 0; /* Отступы вокруг футера */
+            width: 100%; /* Ширина футера */
+        }
+    </style>
+</head>
+
+<body>
+   <header>
+        <div class="logo">
+            <img src="logo.png" alt="Логотип Sea of Games">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="main_page.html">Главная</a></li>
+                <li>
+                    <div class="dropdown">
+                        <button class="dropbtn">Игры</button>
+                        <div class="dropdown-content">
+                            <a href="Game_page.html">Все Игры</a>
+                            <a href="TOP.html">ТОП 25</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Результаты поиска</h1>
+        <div id="games-container"></div> <!-- Контейнер для отображения игр -->
+
+        <script>
+            
+             const games = [
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg',
+        title: 'The Witcher 3: Wild Hunt',
+        year: '2015',
+        genre: 'RPG',
+        description: 'Эпическая ролевая игра в открытом мире, полная захватывающих квестов.',
+        downloadLink: 'https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1174180/header.jpg',
+        title: 'Doom Eternal',
+        year: '2020',
+        genre: 'Экшен',
+        description: 'Скоростной шутер от первого лица с элементами хардкора.',
+        downloadLink: 'https://store.steampowered.com/app/782330/DOOM_Eternal/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1174180/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1174180/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1174180/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/239140/header.jpg',
+        title: 'Dark Souls III',
+        year: '2016',
+        genre: 'Экшен/RPG',
+        description: 'Сложная игра с глубоким сюжетом и захватывающим игровым процессом.',
+        downloadLink: 'https://store.steampowered.com/app/374320/DARK_SOULS_III/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/239140/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/239140/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/239140/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1336900/header.jpg',
+        title: 'Red Dead Redemption 2',
+        year: '2018',
+        genre: 'Экшен/Приключения',
+        description: 'Исторический вестерн с открытым миром и невероятной проработкой деталей.',
+        downloadLink: 'https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1336900/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1336900/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1336900/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1245620/header.jpg',
+        title: 'Elden Ring',
+        year: '2022',
+        genre: 'RPG',
+        description: 'Открытый мир, созданный совместно с Джорджем Мартином.',
+        downloadLink: 'https://store.steampowered.com/app/1245620/Elden_Ring/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1151640/header.jpg',
+        title: 'God of War',
+        year: '2022',
+        genre: 'Экшен/Приключения',
+        description: 'Приключения Кратоса и его сына Атрея в мире норвежской мифологии.',
+        downloadLink: 'https://store.steampowered.com/app/1151640/God_of_War/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1151640/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1151640/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1151640/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1158310/header.jpg',
+        title: 'Ghost of Tsushima DIRECTOR\'S CUT',
+        year: '2024',
+        genre: 'Экшен/Приключения',
+        description: 'Приключения самурая в открытом мире Японии периода самураев.',
+        downloadLink: 'https://store.steampowered.com/app/1158310/Ghost_of_Tsushima_Directors_Cut/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1158310/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1158310/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1158310/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1172470/header.jpg',
+        title: 'Horizon Forbidden West',
+        year: '2022',
+        genre: 'Экшен/RPG',
+        description: 'Приключения Эйлы в постапокалиптическом мире с механическими существами.',
+        downloadLink: 'https://store.steampowered.com/app/1172470/Horizon_Forbidden_West/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172470/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172470/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172470/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1817070/header.jpg',
+        title: 'Stray',
+        year: '2022',
+        genre: 'Приключенческий',
+        description: 'Играйте за кота, путешествующего по киберпанковому миру.',
+        downloadLink: 'https://store.steampowered.com/app/1817070/Stray/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1817070/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1817070/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1817070/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/271590/header.jpg',
+        title: 'Grand Theft Auto V',
+        year: '2013',
+        genre: 'Экшен/Приключения',
+        description: 'Открытый мир с возможностью управлять тремя персонажами.',
+        downloadLink: 'https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/271590/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/271590/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/271590/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/391540/header.jpg',
+        title: 'Middle-earth™: Shadow of War™',
+        year: '2017',
+        genre: 'Экшен/RPG',
+        description: 'Сражайтесь за Средиземье, используя систему "Немезис".',
+        downloadLink: 'https://store.steampowered.com/app/391540/Middleearth_Shadow_of_War/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/391540/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/391540/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/391540/ss_3.jpg'
+        ]
+    },
+        {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/582010/header.jpg',
+        title: 'MONSTER HUNTER: WORLD™',
+        year: '2018',
+        genre: 'Экшен/RPG',
+        description: 'Станьте охотником на монстров в огромном и живом мире.',
+        downloadLink: 'https://store.steampowered.com/app/582010/MONSTER_HUNTER_WORLD/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/582010/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/582010/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/582010/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1145360/header.jpg',
+        title: 'Hades',
+        year: '2020',
+        genre: 'Экшен/Roguelike',
+        description: 'Рогалик с интенсивным боем и замечательной историей.',
+        downloadLink: 'https://store.steampowered.com/app/1145360/Hades/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1145360/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1145360/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1145360/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/629760/header.jpg',
+        title: 'The Evil Within 2',
+        year: '2017',
+        genre: 'Ужасы/Экшен',
+        description: 'Продолжение истории Себастьяна Кастеллана в мире ужасов.',
+        downloadLink: 'https://store.steampowered.com/app/629760/The_Evil_Within_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/629760/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/629760/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/629760/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/242760/header.jpg',
+        title: 'The Forest',
+        year: '2014',
+        genre: 'Выживание/Хоррор',
+        description: 'Выживание на острове, полном опасных существ и тайны.',
+        downloadLink: 'https://store.steampowered.com/app/242760/The_Forest/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/242760/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/242760/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/242760/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/343810/header.jpg',
+        title: 'Batman™: Arkham Knight',
+        year: '2015',
+        genre: 'Экшен',
+        description: 'Станьте Темным Рыцарем в эпическом финале трилогии Arkham.',
+        downloadLink: 'https://store.steampowered.com/app/208650/Batman_Arkham_Knight/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/343810/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/343810/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/343810/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/403640/header.jpg',
+        title: 'Dishonored 2',
+        year: '2016',
+        genre: 'Экшен/Приключения',
+        description: 'Играйте за Эмили или Корво, выбирайте свой стиль прохождения.',
+        downloadLink: 'https://store.steampowered.com/app/403640/Dishonored_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/403640/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/403640/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/403640/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg',
+        title: 'DEATH STRANDING DIRECTOR\'S CUT',
+        year: '2022',
+        genre: 'Экшен/Приключения',
+        description: 'Исследуйте загадочный мир после апокалипсиса.',
+        downloadLink: 'https://store.steampowered.com/app/1085660/Death_Stranding_Directors_Cut/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1086940/header.jpg',
+        title: 'Baldur\'s Gate 3',
+        year: '2023',
+        genre: 'RPG',
+        description: 'Приключения в мире Forgotten Realms с элементами войны и магии.',
+        downloadLink: 'https://store.steampowered.com/app/1086940/Baldurs_Gate_3/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086940/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086940/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086940/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/632360/header.jpg',
+        title: 'Divinity: Original Sin 2',
+        year: '2017',
+        genre: 'RPG',
+        description: 'Глубокая RPG с пошаговыми боями и сильным сюжетом.',
+        downloadLink: 'https://store.steampowered.com/app/435150/Divinity_Original_Sin_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/632360/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/632360/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/632360/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1172620/header.jpg',
+        title: 'Sekiro™: Shadows Die Twice',
+        year: '2019',
+        genre: 'Экшен/Приключения',
+        description: 'Сражайтесь и исследуйте постапокалиптическую Японию как ниндзя.',
+        downloadLink: 'https://store.steampowered.com/app/814380/Sekiro_Shadows_Die_Twice/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172620/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172620/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172620/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg',
+        title: 'Counter-Strike 2',
+        year: '2012',
+        genre: 'Экшен/Шутер',
+        description: 'Многопользовательский шутер, который стал классикой жанра.',
+        downloadLink: 'https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/730/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/730/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/730/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/513710/header.jpg',
+        title: 'NieR:Automata™',
+        year: '2017',
+        genre: 'Экшен/RPG',
+        description: 'Сочетание великолепной истории с динамичным игровым процессом.',
+        downloadLink: 'https://store.steampowered.com/app/524220/NieRAutomata/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/513710/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/513710/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/513710/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/252490/header.jpg',
+        title: 'Rust',
+        year: '2013',
+        genre: 'Выживание',
+        description: 'Выживайте на беспокойном острове, собирая ресурсы и строя базу.',
+        downloadLink: 'https://store.steampowered.com/app/252490/Rust/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/252490/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/252490/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/252490/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/362890/header.jpg',
+        title: 'RESIDENT EVIL 7 biohazard',
+        year: '2017',
+        genre: 'Ужасы/Экшен',
+        description: 'Вернитесь к корням ужасов в первом лице с элементами выживания.',
+        downloadLink: 'https://store.steampowered.com/app/418370/Resident_Evil_7_Biohazard/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/362890/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/362890/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/362890/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1246210/header.jpg',
+        title: 'Persona 5 Royal',
+        year: '2022',
+        genre: 'RPG',
+        description: 'Японская RPG с элементами симулятора жизни и уникальной системой боя.',
+        downloadLink: 'https://store.steampowered.com/app/11860400/Persona_5_Royal/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1246210/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1246210/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1246210/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1086980/header.jpg',
+        title: 'STAR WARS Jedi: Fallen Order™',
+        year: '2019',
+        genre: 'Экшен/Приключения',
+        description: 'Станьте Джедаем в стиле экшен в мире Star Wars.',
+        downloadLink: 'https://store.steampowered.com/app/1172380/STAR_WARS_Jedi_Fallen_Order/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086980/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086980/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086980/ss_3.jpg'
+        ]
+    },
+          {
+    img: 'https://cdn.akamai.steamstatic.com/steam/apps/1222680/header.jpg',
+    title: 'DOOM Eternal',
+    year: '2020',
+    genre: 'Экшен/Шутер от первого лица',
+    description: 'Избегайте демонов и сражайтесь с ордами врагов в этой захватывающей игре о смерти и мести.',
+    downloadLink: 'https://store.steampowered.com/app/357479/DOOM_Eternal/',
+    screenshots: [
+        'https://cdn.akamai.steamstatic.com/steam/apps/1222680/ss_1.jpg',
+        'https://cdn.akamai.steamstatic.com/steam/apps/1222680/ss_2.jpg',
+        'https://cdn.akamai.steamstatic.com/steam/apps/1222680/ss_3.jpg'
+    ]
+},
+          
+{
+    img: 'https://cdn.akamai.steamstatic.com/steam/apps/57690/header.jpg',
+    title: 'The Witcher 3: Wild Hunt',
+    year: '2015',
+    genre: 'Ролевые игры/Экшен',
+    description: 'Станьте Геральтом из Ривии и исследуйте огромный открытый мир, полон чудовищ и приключений.',
+    downloadLink: 'https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/',
+    screenshots: [
+        'https://cdn.akamai.steamstatic.com/steam/apps/57690/ss_1.jpg',
+        'https://cdn.akamai.steamstatic.com/steam/apps/57690/ss_2.jpg',
+        'https://cdn.akamai.steamstatic.com/steam/apps/57690/ss_3.jpg'
+    ]
+},
+          {
+    img: 'https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg',
+    title: 'Dark Souls III',
+    year: '2016',
+    genre: 'Ролевые игры/Экшен',
+    description: 'Погрузитесь в мрачный и сложный мир, полный опасностей и загадок, где каждое ваше решение имеет значение.',
+    downloadLink: 'https://store.steampowered.com/app/374320/DARK_SOULS_III/',
+    screenshots: [
+        'https://cdn.akamai.steamstatic.com/steam/apps/105600/ss_1.jpg',
+        'https://cdn.akamai.steamstatic.com/steam/apps/105600/ss_2.jpg',
+        'https://cdn.akamai.steamstatic.com/steam/apps/105600/ss_3.jpg'
+    ]
+},
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1336900/header.jpg',
+        title: 'Red Dead Redemption 2',
+        year: '2018',
+        genre: 'Action, RPG',
+        description: 'Эпическая история о жизни бандитов на Диком Западе с открытым миром и множеством активностей.',
+        downloadLink: 'https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1336900/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1336900/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1336900/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1245620/header.jpg',
+        title: 'Elden Ring',
+        year: '2022',
+        genre: 'Action RPG',
+        description: 'Игра в открытом мире от создателей Dark Souls с захватывающим сюжетом и великолепной графикой.',
+        downloadLink: 'https://store.steampowered.com/app/1245620/Elden_Ring/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1151640/header.jpg',
+        title: 'God of War',
+        year: '2022',
+        genre: 'Action, Adventure',
+        description: 'Приключенческая игра о Кратосе и его сыне Атреусе в мире скандинавской мифологии.',
+        downloadLink: 'https://store.steampowered.com/app/1151640/God_of_War/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1151640/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1151640/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1151640/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1158310/header.jpg',
+        title: 'Ghost of Tsushima DIRECTOR\'S CUT',
+        year: '2024',
+        genre: 'Action, Adventure',
+        description: 'Приключенческая игра о самурае в Японии, с красивым открытым миром и зрелищными боями.',
+        downloadLink: 'https://store.steampowered.com/app/1158310/Ghost_of_Tsushima_Directors_Cut/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1158310/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1158310/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1158310/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1172470/header.jpg',
+        title: 'Horizon Forbidden West',
+        year: '2022',
+        genre: 'Action RPG',
+        description: 'Продолжение приключений Эйлы в мире, населённом механическими существами.',
+        downloadLink: 'https://store.steampowered.com/app/1172470/Horizon_Forbidden_West/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172470/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172470/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172470/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1817070/header.jpg',
+        title: 'Stray',
+        year: '2022',
+        genre: 'Adventure',
+        description: 'Приключенческая игра, где вы играете за кота в мире киберпанка.',
+        downloadLink: 'https://store.steampowered.com/app/1817070/Stray/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1817070/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1817070/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1817070/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/271590/header.jpg',
+        title: 'Grand Theft Auto V',
+        year: '2013',
+        genre: 'Action, Adventure',
+        description: 'Открытый мир, наполненный преступностью, экшеном и хулиганскими заданиями.',
+        downloadLink: 'https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/271590/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/271590/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/271590/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/391540/header.jpg',
+        title: 'Middle-earth™: Shadow of War™',
+        year: '2017',
+        genre: 'Action RPG',
+        description: 'Приключенческая игра в мире Властелина колец с системой завоевания.',
+        downloadLink: 'https://store.steampowered.com/app/391540/Middleearth_Shadow_of_War/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/391540/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/391540/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/391540/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/582010/header.jpg',
+        title: 'MONSTER HUNTER: WORLD™',
+        year: '2018',
+        genre: 'Action RPG',
+        description: 'Сразитесь с гигантскими монстрами, исследуя обширные миры и собирая трофеи.',
+        downloadLink: 'https://store.steampowered.com/app/582010/MONSTER_HUNTER_WORLD/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/582010/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/582010/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/582010/ss_3.jpg'
+        ]
+    },
+                 {
+    "img": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2358720/header.jpg",
+    "title": "Black Myth: Wukong",
+    "year": "2024",
+    "genre": "Action RPG",
+    "description": "Эпическая игра, основанная на китайской мифологии, с захватывающим геймплеем и красивой графикой.",
+    "downloadLink": "https://www.example.com/black_myth_wukong"
+},
+              {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1145360/header.jpg',
+        title: 'Hades',
+        year: '2020',
+        genre: 'Roguelike, Action',
+        description: 'Погрузитесь в мир греческой мифологии и попытайтесь сбежать из Ада.',
+        downloadLink: 'https://store.steampowered.com/app/1145360/Hades/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1145360/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1145360/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1145360/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/629760/header.jpg',
+        title: 'The Evil Within 2',
+        year: '2017',
+        genre: 'Survival Horror',
+        description: 'Погрузитесь в мир кошмаров и ужасов в этом психологическом триллере.',
+        downloadLink: 'https://store.steampowered.com/app/629760/The_Evil_Within_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/629760/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/629760/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/629760/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/242760/header.jpg',
+        title: 'The Forest',
+        year: '2014',
+        genre: 'Survival, Horror',
+        description: 'Выживание в открытом мире после крушения самолета на таинственном острове.',
+        downloadLink: 'https://store.steampowered.com/app/242760/The_Forest/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/242760/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/242760/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/242760/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/343810/header.jpg',
+        title: 'Batman™: Arkham Knight',
+        year: '2015',
+        genre: 'Action, Adventure',
+        description: 'Погрузитесь в мир Готэма и станьте Бэтменом в этой увлекательной игре.',
+        downloadLink: 'https://store.steampowered.com/app/343810/Batman_Arkham_Knight/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/343810/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/343810/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/343810/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/403640/header.jpg',
+        title: 'Dishonored 2',
+        year: '2016',
+        genre: 'Action, Stealth',
+        description: 'Приключенческая игра с элементами стелса, где вам предстоит использовать уникальные способности.',
+        downloadLink: 'https://store.steampowered.com/app/403640/Dishonored_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/403640/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/403640/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/403640/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg',
+        title: 'DEATH STRANDING DIRECTOR\'S CUT',
+        year: '2022',
+        genre: 'Action, Adventure',
+        description: 'Уникальная игра о связи и выживании в постапокалиптическом мире.',
+        downloadLink: 'https://store.steampowered.com/app/1085660/Death_Stranding_Directors_Cut/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1086940/header.jpg',
+        title: 'Baldur\'s Gate 3',
+        year: '2023',
+        genre: 'RPG',
+        description: 'Играйте в классическую ролевую игру с глубоким сюжетом и возможностью выбора.',
+        downloadLink: 'https://store.steampowered.com/app/1086940/Baldurs_Gate_3/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086940/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086940/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086940/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/632360/header.jpg',
+        title: 'Divinity: Original Sin 2',
+        year: '2017',
+        genre: 'RPG',
+        description: 'Глубокая ролевая игра с системой пошаговых сражений и богатым миром.',
+        downloadLink: 'https://store.steampowered.com/app/435150/Divinity_Original_Sin_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/632360/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/632360/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/632360/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1172620/header.jpg',
+        title: 'Sekiro™: Shadows Die Twice',
+        year: '2019',
+        genre: 'Action, Adventure',
+        description: 'Игра в стиле самурайского экшена с уникальной механикой боя и скрытности.',
+        downloadLink: 'https://store.steampowered.com/app/814380/Sekiro_Shadows_Die_Twice/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172620/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172620/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1172620/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg',
+        title: 'Counter-Strike 2',
+        year: '2022',
+        genre: 'FPS',
+        description: 'Классический многопользовательский шутер, возвращающийся в новом свете.',
+        downloadLink: 'https://store.steampowered.com/app/730/CounterStrike_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/730/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/730/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/730/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/513710/header.jpg',
+        title: 'NieR:Automata™',
+        year: '2017',
+        genre: 'Action RPG',
+        description: 'Захватывающая история о борьбе между роботами и людьми в постапокалиптическом мире.',
+        downloadLink: 'https://store.steampowered.com/app/524220/NieRAutomata/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/513710/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/513710/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/513710/ss_3.jpg'
+        ]
+    },
+       {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/252490/header.jpg',
+        title: 'Rust',
+        year: '2013',
+        genre: 'Survival',
+        description: 'Выживайте в открытом мире, собирайте ресурсы и стройте свою базу.',
+        downloadLink: 'https://store.steampowered.com/app/252490/Rust/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/252490/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/252490/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/252490/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/362890/header.jpg',
+        title: 'RESIDENT EVIL 7 biohazard',
+        year: '2017',
+        genre: 'Survival Horror',
+        description: 'Возвращение к корням хоррор-серии с новым взглядом на выживание.',
+        downloadLink: 'https://store.steampowered.com/app/418370/Resident_Evil_7_Biohazard/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/362890/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/362890/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/362890/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1246210/header.jpg',
+        title: 'Persona 5 Royal',
+        year: '2022',
+        genre: 'JRPG',
+        description: 'Погрузитесь в уникальный мир японской ролевой игры с элементами социального симулятора.',
+        downloadLink: 'https://store.steampowered.com/app/1487280/Persona_5_Royal/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1246210/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1246210/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1246210/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1086980/header.jpg',
+        title: 'STAR WARS Jedi: Fallen Order™',
+        year: '2019',
+        genre: 'Action, Adventure',
+        description: 'Приключенческая игра в мире Star Wars с уникальной историей и боевой системой.',
+        downloadLink: 'https://store.steampowered.com/app/1172380/STAR_WARS_Jedi_Fallen_Order/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086980/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086980/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1086980/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/413150/header.jpg',
+        title: 'Stardew Valley',
+        year: '2016',
+        genre: 'Simulation, RPG',
+        description: 'Симулятор фермерства, где вы можете выращивать растения, разводить животных и исследовать мир.',
+        downloadLink: 'https://store.steampowered.com/app/413150/Stardew_Valley/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/413150/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/413150/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/413150/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1088580/header.jpg',
+        title: 'DEATHLOOP',
+        year: '2021',
+        genre: 'Action, FPS',
+        description: 'Игра с уникальным циклом времени, где вам нужно убить восьмерых целей, чтобы сбежать.',
+        downloadLink: 'https://store.steampowered.com/app/1252330/DEATHLOOP/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1088580/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1088580/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1088580/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1097150/header.jpg',
+        title: 'STAR WARS Jedi: Survivor™',
+        year: '2023',
+        genre: 'Action, Adventure',
+        description: 'Продолжение истории Кэла Кестиса в мире Star Wars с новыми приключениями и врагами.',
+        downloadLink: 'https://store.steampowered.com/app/1097150/STAR_WARS_Jedi_Survivor/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1097150/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1097150/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1097150/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg',
+        title: 'Terraria',
+        year: '2011',
+        genre: 'Sandbox, Adventure',
+        description: 'Песочница с элементами выживания, где вы можете строить, исследовать и сражаться с врагами.',
+        downloadLink: 'https://store.steampowered.com/app/105600/Terraria/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/105600/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/105600/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/105600/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/990080/header.jpg',
+        title: 'Marvel’s Spider-Man Remastered',
+        year: '2022',
+        genre: 'Action, Adventure',
+        description: 'Погрузитесь в мир Человека-паука с улучшенной графикой и новыми возможностями.',
+        downloadLink: 'https://store.steampowered.com/app/990080/Marvels_Spiderman_Remastered/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/990080/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/990080/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/990080/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/1446780/header.jpg',
+        title: 'Days Gone',
+        year: '2021',
+        genre: 'Action, Adventure',
+        description: 'Приключенческая игра о выживании в постапокалиптическом мире, полном зомби.',
+        downloadLink: 'https://store.steampowered.com/app/1250410/Days_Gone/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/1446780/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1446780/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/1446780/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/227300/header.jpg',
+        title: 'Euro Truck Simulator 2',
+        year: '2012',
+        genre: 'Simulation',
+        description: 'Симулятор грузоперевозок по Европе с реалистичной физикой и графикой.',
+        downloadLink: 'https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/227300/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/227300/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/227300/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg',
+        title: 'Factorio',
+        year: '2020',
+        genre: 'Simulation, Strategy',
+        description: 'Игра о строительстве и управлении фабриками, где вам нужно автоматизировать производство.',
+        downloadLink: 'https://store.steampowered.com/app/427520/Factorio/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/105600/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/105600/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/105600/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/393420/header.jpg',
+        title: 'ARK: Survival Evolved',
+        year: '2017',
+        genre: 'Survival, Adventure',
+        description: 'Выживайте на острове, полном динозавров и других опасностей, исследуйте мир и стройте базу.',
+        downloadLink: 'https://store.steampowered.com/app/346110/ARK_Survival_Evolved/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/393420/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/393420/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/393420/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/24010/header.jpg',
+        title: 'Portal 2',
+        year: '2011',
+        genre: 'Puzzle, Platformer',
+        description: 'Головоломка с уникальной механикой порталов, полная юмора и неожиданных поворотов.',
+        downloadLink: 'https://store.steampowered.com/app/620/Portal_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/24010/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/24010/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/24010/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/8930/header.jpg',
+        title: 'Half-Life 2',
+        year: '2004',
+        genre: 'Action, Shooter',
+        description: 'Культовая игра от первого лица с захватывающим сюжетом и инновационной физикой.',
+        downloadLink: 'https://store.steampowered.com/app/220/HalfLife_2/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/8930/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/8930/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/8930/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/271590/header.jpg',
+        title: 'Grand Theft Auto V',
+        year: '2013',
+        genre: 'Action, Adventure',
+        description: 'Открытый мир, наполненный преступностью, экшеном и хулиганскими заданиями.',
+        downloadLink: 'https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/271590/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/271590/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/271590/ss_3.jpg'
+        ]
+    },
+    {
+        img: 'https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg',
+        title: 'The Witcher 3: Wild Hunt - Game of the Year Edition',
+        year: '2016',
+        genre: 'Action RPG',
+        description: 'Полное издание игры с всеми дополнениями и улучшениями.',
+        downloadLink: 'https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_1.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_2.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_3.jpg'
+        ]
+    }
+];
+
+            
+        let currentPage = 0;
+        const itemsPerPage = 100; // Устанавливаем количество игр на странице
+
+        function showGames(filteredGames) {
+            const container = document.getElementById('games-container');
+            container.innerHTML = '';
+
+            if (filteredGames.length === 0) {
+                container.innerHTML = '<p>Ничего не найдено.</p>';
+                return;
+            }
+
+            const start = currentPage * itemsPerPage;
+            const end = start + itemsPerPage;
+            const gamesToShow = filteredGames.slice(start, end);
+
+            gamesToShow.forEach(game => {
+                const gameItem = document.createElement('div');
+                gameItem.className = 'game-item';
+                gameItem.innerHTML = `
+                    <a href="game_details.html?title=${encodeURIComponent(game.title)}&img=${encodeURIComponent(game.img)}&year=${encodeURIComponent(game.year)}" target="_blank">
+                        <img src="${game.img}" alt="${game.title}">
+                        <div class="game-info">
+                            <h3>${game.title}</h3>
+                            <p>${game.year}</p>
+                        </div>
+                    </a>
+                `;
+                container.appendChild(gameItem);
+            });
+
+            document.getElementById('page-info').innerText = `Страница ${currentPage + 1} из ${Math.ceil(filteredGames.length / itemsPerPage)}`;
+            document.getElementById('prev-button').disabled = currentPage === 0;
+            document.getElementById('next-button').disabled = currentPage >= Math.ceil(filteredGames.length / itemsPerPage) - 1;
+        }
+
+        function filterGames(query) {
+            const filteredGames = games.filter(game => game.title.toLowerCase().includes(query.toLowerCase()));
+            currentPage = 0; // Сбросить текущую страницу при новом фильтре
+            showGames(filteredGames);
+        }
+
+        // Получение параметров запроса из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search');
+        if (searchQuery) {
+            filterGames(searchQuery);
+        } else {
+            document.getElementById('games-container').innerHTML = '<p>Пожалуйста, введите запрос для поиска.</p>';
+        }
+
+        document.getElementById('prev-button').addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                showGames(games.filter(game => game.title.toLowerCase().includes(searchQuery.toLowerCase())));
+                window.scrollTo(0, 0);
+            }
+        });
+
+        document.getElementById('next-button').addEventListener('click', () => {
+            if (currentPage < Math.ceil(games.length / itemsPerPage) - 1) {
+                currentPage++;
+                showGames(games.filter(game => game.title.toLowerCase().includes(searchQuery.toLowerCase())));
+                window.scrollTo(0, 0);
+            }
+        });
+    </script>
+    </main>
+</body>
+</html>

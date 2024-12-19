@@ -1,0 +1,158 @@
+$animation-timing: 27s;
+$carousel-items: 9;
+$animation-delay-fraction: $animation-timing / $carousel-items;
+$animation-steps-fraction: 100 / $carousel-items;
+$slide-change-timing: 3; // percentage of total animation cycle
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body0 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.wrapper0 {
+    background: linear-gradient(60deg, #420285, #08BDBD);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.carousel0 {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.carousel__item0 {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    padding: 0 12px;
+    opacity: 0;
+    filter: drop-shadow(0 2px 2px #555);
+    will-change: transform, opacity;
+    animation: carousel-animate-vertical $animation-timing linear infinite;
+}
+
+@for $i from 1 through ($carousel-items - 1) { 
+    .carousel__item0:nth-child(#{$i}) {
+        animation-delay: calc(#{$animation-delay-fraction} * #{$i - 2});
+    }
+}
+
+.carousel__item0:last-child {
+    animation-delay: calc(-#{$animation-delay-fraction} * 2);
+}
+
+.carousel__item-head0 {
+    border-radius: 50%;
+    background-color: transparent; // Изменили на прозрачный
+    width: 90px;
+    height: 90px;
+    padding: 14px;
+    position: relative;
+    margin-right: -45px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    background-image: url('https://cdn.akamai.steamstatic.com/steam/apps/403640/header.jpg'); /* Пример для эмодзи */
+    background-size: cover;
+}
+
+.carousel__item-body0 {
+    width: 100%;
+    background-color: transparent; // Прозрачный фон
+    border-radius: 8px;
+    padding: 16px 20px 16px 70px;
+}
+
+.title0 {
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+@keyframes carousel-animate-vertical {
+    0% {
+        transform: translateY(100%) scale(0.5);
+        opacity: 0;
+        visibility: hidden;
+    }
+    #{$slide-change-timing}%,
+    #{$animation-steps-fraction}% {
+        transform: translateY(100%) scale(0.7);
+        opacity: .4;
+        visibility: visible;
+    }
+    #{$animation-steps-fraction + $slide-change-timing}%,
+    #{$animation-steps-fraction * 2}% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+    #{($animation-steps-fraction * 2) + $slide-change-timing}%,
+    #{$animation-steps-fraction * 3}% {
+        transform: translateY(-100%) scale(0.7);
+        opacity: .4;
+        visibility: visible;
+    }
+    #{($animation-steps-fraction * 3) + $slide-change-timing}% {
+        transform: translateY(-100%) scale(0.5);
+        opacity: 0;
+        visibility: visible;
+    }
+    100% {
+        transform: translateY(-100%) scale(0.5);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.gradient-section0 {
+    height: 600px;
+    background: linear-gradient(to bottom, #030318, #b6fef4);
+    position: relative;
+    width: 100%;
+}
+
+.custom-title0 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    font-size: 24px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.slider20 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-wrapper20 {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slider20 img {
+    width: 210px; /* Ширина изображений */
+    height: auto; /* Поддержка соотношения сторон */
+    margin-right: 20px; /* Отступ между изображениями */
+}
